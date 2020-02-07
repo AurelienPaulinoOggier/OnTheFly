@@ -1,0 +1,42 @@
+
+nav{
+	border-radius:30px;
+	background-color:deepskyblue;
+	background-position: absolute;
+	background-size: 100% 150%;
+	height:60px;
+}
+ul{
+	list-style-type:none;
+}
+li{
+	display: inline-block;
+	padding: 21px;
+	text-decoration:none;
+	font-family:"Arial";
+}
+li:hover{
+	background-color: #009ddd;
+}
+body {
+	background-image: url("https://i.imgur.com/lMGw1gw.jpg");
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: 100% 100%;
+} 
+h1{
+	color: white;
+    text-align:center;
+}
+h2{
+	color: aqua;
+	text-align:center;
+}
+h3{
+	color: midnightblue;
+	text-align:center;
+}
+h4{
+	color: white;
+	text-align:center;
+}
