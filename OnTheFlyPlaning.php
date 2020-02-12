@@ -27,7 +27,7 @@
 			,$username, $password);
 			
 		echo "<h3><table style='border: solid 3px purple; background-color: skyblue;'>";
-		echo "<tr><th>Vliegtuignummer</th><th>Type</th><th>Vertrek</th><th>Retour</th><th>Bestemming</th><th>Status</th><th>Vliegtuigmaatschappij</th></tr></h3>";
+		echo "<tr><th>Vlucht</th><th>Type</th><th>Vertrek</th><th>Retour</th><th>Bestemming</th><th>Status</th><th>Vliegtuigmaatschappij</th><th>Vliegtuignummer</th></tr></h3>";
 		
 		class TableRows extends RecursiveIteratorIterator {
 			
@@ -48,7 +48,7 @@
 			}
 		}
 					
-		$query = "SELECT vliegtuigen.vnummer, vliegtuigen.type, planning.dvertrek, planning.dretour, planning.bestemming, planning.pstatus, vliegtuigen.vmaatschappij
+		$query = "SELECT planning.vlnummer, vliegtuigen.type, planning.dvertrek, planning.dretour, planning.bestemming, planning.pstatus, vliegtuigen.vmaatschappij, vliegtuigen.vnummer
 						FROM planning, vliegtuigen ";
 		$stm = $con->prepare($query);
 					
