@@ -11,8 +11,7 @@
                 <li><a href="http://localhost/Vliegtuig/OnTheFlyHome.php" style="color: #d65a12; text-decoration: none;" > HOME <a/></li>
                 <li><a href="http://localhost/Vliegtuig/OnTheFlyPlaning.php" style="color: #d65a12; text-decoration: none;"> Planing <a/></li>
                 <li><a href="http://localhost/Vliegtuig/OnTheFlyVligtuigen.php" style="color: #d65a12; text-decoration: none;"> Vlietuigen <a/></li>
-                <li><a href="http://localhost/Vliegtuig/OnTheFlyToegoegen.php" style="color: #d65a12; text-decoration: none;"> Toevoegen <a/></li>
-                <li><a href="http://localhost/Vliegtuig/OnTheFlyLogin.php" style="color: #d65a12; text-decoration: none;"> Login <a/></li>
+                <li><a href="http://localhost/Vliegtuig/OnTheFlyToevoegen.php" style="color: #d65a12; text-decoration: none;"> Toevoegen <a/></li>
             </ul>
 		</nav>
 		</form>
@@ -25,8 +24,43 @@
 
         $con = new PDO ("mysql:host=".$host.";dbname=".$dbname.";"
 			,$username, $password);
+
+		#if(stm->execute() -- true) {
+			#$res = stm->fetshAll(PDO::FETCH_OBJ);
+			#foreach($res as $vliegtuig)
+			#echo 'localhost/Vliegtuig/OnTheFlyLogin.php?vid=". $vid->vid."'src=.jng
+		#}
+		#echo $_GET['vid'];
+		#$query = "SELECT * FROM vliegtuigen WHERE vid = $airplane";
+		#$stm - $con-> prepare($query);
+		#if(stm->execute()){
+			#$vliegtuig = $stm->fetch(PDO::FETCH_OBJ);
+		#}
+		#<form method="POST">
+		#Naam:<input name="vnummer" type="name" value="<?php echo $vliegtuig->vliegtuig; " ><br/>
+		#</form>
+		#$vid = $_GET['vid']
+		#$query = "UPDATE vliegtuig SET vliegtuig = $vliegtuig WHERE vid = $vid"
+		#$stm -> prepare($query);
+		#if(stm->execute()){
+			#echo "update gelukt";
+		#}
+        #if(isset($_POST['btnJA'])){
+        #if (isset($_POST[]))
 			
-		#$_GET['']
+        #$airplane = $_GET['vid'];
+        #$query = "DELETE FROM vliegtuigen WHERE vid = $airplane";
+        #$stm - $con-> prepare($query);
+        #if(stm->execute()){
+            #echo "Record verwijderd"
+            #heder(location: locatie.php)
+        #}
+		#ID: <?= $airplane->vid ? >
+		#<input type="text" name="vnummer" value= <?= $airplane->vnummer ? >
+        #}elseif(isset($_POST['btnNEE'])){
+            #header(location: locatie.php)
+        #}
+
 		?>
 	</body>
 </html>

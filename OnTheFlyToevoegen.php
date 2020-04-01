@@ -2,7 +2,7 @@
 <html>
 	<head>
         <link rel="stylesheet" href="StyleOnTheFly.css">
-		<title> Vliegtuigen </title>
+		<title> Toevoegen </title>
 	</head>
 	<body>
         <form method="POST">
@@ -11,25 +11,39 @@
                 <li><a href="http://localhost/Vliegtuig/OnTheFlyHome.php" style="color: #d65a12; text-decoration: none;" > HOME <a/></li>
                 <li><a href="http://localhost/Vliegtuig/OnTheFlyPlaning.php" style="color: #d65a12; text-decoration: none;"> Planing <a/></li>
                 <li><a href="http://localhost/Vliegtuig/OnTheFlyVligtuigen.php" style="color: #d65a12; text-decoration: none;"> Vlietuigen <a/></li>
-                <li><a href="http://localhost/Vliegtuig/OnTheFlyToegoegen.php" style="color: #d65a12; text-decoration: none;"> Toevoegen <a/></li>
-                <li><a href="http://localhost/Vliegtuig/OnTheFlyLogin.php" style="color: #d65a12; text-decoration: none;"> Login <a/></li>
+                <li><a href="http://localhost/Vliegtuig/OnTheFlyToevoegen.php" style="color: #d65a12; text-decoration: none;"> Toevoegen <a/></li>
             </ul>
 		</nav>
-		
-		<h1> toevoegen</h1><br/>
-		<h3>Naam:<input name="vnummer" type="name"><br/>	
-			Soort:<input name="type" type="text" /><br/>
-			status van vliegtuig:<select name="vstatus">
-						<option value=" "> </option>
-						<option value=" "> </option>
-						<option value=" "> </option>
-						<option value=" "> </option>
-						<option value=" "> </option>
-					</select><br/>
-			Gedrag:<input name=" " type=" "/><br/>
-		
-		<h3><input type = "submit" name = "btnOpslaan" value = "Toevoegen" /></h3>
-		</form>
+		<br/>
+		<div class = 'ToBx'>
+			<h1> Vliegtuig toevoegen</h1>
+			<h3><input name="nummer" type="name" value="Vliegtuig nummer"><br/>	
+				<input name="vtype" type="text" value="Type"/><br/>
+				<input name="vmaatschappij" type="text" value="Vliegtuig maatschappij"/><br/>		
+				<select name="vstatus">
+							<option value=" ">Vliegtuig status</option>
+							<option value="normaal">normaal</option>
+							<option value="grounded">grounded</option>
+							<option value="in reparatie">in reparatie</option>
+							<option value="verloren">verloren</option>
+						</select><br/>
+			
+			<h3><input type = "submit" name = "btnVliegtuig" value = "Vliegtuig Toevoegen" class='submitBx' /></h3>
+			<br/>
+			<h1> Vlucht toevoegen</h1>
+			<h3><input name="vlnummer" type="name" value="Vlucht nummer"/><br/>	
+				<input name="vertrek" type="text" value="Vertrek"/><br/>
+				<input name="aankomst" type="text" value="Aankomst"/><br/>
+				<input name="datum" type="date" value=" "/><br/>					
+				<input name="bestemming" type="text" value="Bestemming"/><br/>
+				<select name="pstatus">
+							<option value=" ">Vlucht status</option>
+							<option value="normaal">normaal</option>
+							<option value="geannuleerd">geannuleert</option>
+							<option value="vertraagt">vertraagt</option>
+						</select><br/>
+				<input name="vnummer" type="name" value="Vliegtuig nummer"><br/>
+			<h3><input type = "submit" name = "btnVlucht" value = "Vlucht Toevoegen" class='submitBx' /></h3>
 		
 		<?php
 		$host = "localhost";
@@ -39,42 +53,93 @@
 
         $con = new PDO ("mysql:host=".$host.";dbname=".$dbname.";"
 			,$username, $password);
+			
 		
-		#$vnummer = $_POST["vnummer"];
-		#$vstatus = $_POST["vstatus"];
-		#$  = $_POST[" "];
-		#$  = $_POST[" "];
-		#$  = $_POST[" "];
-		#$vid = 0;
+		if (isset($_POST["btnVliegtuig"])){
 		
-		#if (isset($_POST["btnOpslaan"])){
-			#$query = "SELECT max(vid) as maxid FROM vliegtuigen";
-			#$stm = $con->prepare($query);
-			#if ($stm->execute()) {
-				#$vliegtuigen = $stm->fetch(PDO::FETCH_OBJ);
-				#$vid = $vliegtuigen->maxid + 1;
-			#}
+			$nummer = $_POST["nummer"];
+			$vtype  = $_POST["vtype"];
+			$vmaatschappij = $_POST["vmaatschappij"];
+			$vstatus = $_POST["vstatus"];
+				
+			$query = "INSERT INTO vliegtuigen(vnummer, vtype,  vmaatschappij, vstatus) VALUES".
+						"('$nummer', '$vtype', '$vmaatschappij', '$vstatus')";
+			$stm = $con->prepare($query);
+			if($stm->execute()){
+				echo "Vliegtuig is Toevoegd";
+				
+			}else echo "!ERROR!";
+		}
+		
+		if (isset($_POST["btnVlucht"])){
+			
+			$vlnummer = $_POST["vlnummer"];
+			$vertrek  = $_POST["vertrek"];
+			$aankomst = $_POST["aankomst"];
+			$datum = $_POST["datum"];
+			$bestemming = $_POST["bestemming"];
+			$pstatus = $_POST["pstatus"];
+			$vnummer = $_POST["vnummer"];
+			$pid = 0;
+			
+			$query = "SELECT max(pid) as maxid FROM planning";
+			$stm = $con->prepare($query);
+			if ($stm->execute()) {
+				$planning = $stm->fetch(PDO::FETCH_OBJ);
+				$pid = $planning->maxid + 1;
+			}
+			
+			$query = "SELECT * FROM vliegtuigen WHERE vnummer = '$vnummer'";
+			$stm = $con->prepare($query);
+			if ($stm->execute()) {
+				$vnummer = $stm->fetch(PDO::FETCH_OBJ);
+				$query = "INSERT INTO planning(pid, vid, vlnummer, vertrek,  aankomst, datum, bestemming, pstatus) VALUES" .
+					"($pid, $vnummer->vid, '$vlnummer', '$vertrek', '$aankomst', '$datum', '$bestemming', '$pstatus')";
+				$stm = $con->prepare($query);
+				if($stm->execute()){
+					echo "Vlucht is toegevoegd";
 					
-			#$query = "INSERT INTO vliegtuigen(vnummer, vstatus,  ,  ,  ) VALUES".
-						#"('$vnummer', '$vstatus', '$ ', '$ ', '$ ')";
-			#$stm = $con->prepare($query);
-			#if($stm->execute()){
-				#echo "Statment correct uitvoerd";
-				
-			#}else echo "Query mislukt!";
-				
-			#$query = "SELECT * FROM planing WHERE  = '$ '";
-			#$stm = $con->prepare($query);
-			#if ($stm->execute()) {
-				#$  = $stm->fetch(PDO::FETCH_OBJ);
-				#$query = "INSERT INTO   ( ,  ,  ) VALUES" . "($ , $ -> , '$ ')";
-				#$stm = $con->prepare($query);
-				#if ($stm->execute()) {
-					#echo "Statment verblijf correct uitvoerd";
-				#}else echo "Query mislukt!";
-			#}
-		#}
+				}else echo "Query mislukt!";
+			}else echo "verkeerde Vliegtuig nummer!";
+		}
 		
 		?>
+		</div>
+		<div class = 'VBx' >
+		<?php
+		echo "<h3><table style='border: solid 3px purple; background-color: skyblue;'>";
+		echo "<tr><th>Vliegtuig nummer</th></tr></h3>";
+		
+		class TableRows extends RecursiveIteratorIterator {
+			
+			function __construct($it) {
+				parent::__construct($it, self::LEAVES_ONLY);
+			}
+
+			function current() {
+				return "<td style='width: 175px; border: solid 2px purple; background-color:lightskyblue ;'>" . parent::current(). "</td>";
+			}
+
+			function beginChildren() {
+				echo "<tr>";
+			}
+
+			function endChildren() {
+				echo "</tr>" . "\n";
+			}
+		}
+					
+		$query = "SELECT vliegtuigen.vnummer FROM vliegtuigen ";
+		$stm = $con->prepare($query);
+					
+		if ($stm->execute()){
+			$result = $stm->setFetchMode(PDO::FETCH_ASSOC);
+			foreach(new TableRows(new RecursiveArrayIterator($stm->fetchAll())) as $k=>$v) {
+				echo $v;
+			}
+		}
+		?>
+		</div>
+		</form>
 	</body>
 </html>
