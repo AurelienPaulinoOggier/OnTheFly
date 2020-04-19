@@ -14,7 +14,10 @@
 			<div/>
 		</form>
 		
-		<?php
+		<?php	
+	#verwijderen van vliegtuigen
+	
+	#database connectie
 		$host = "localhost";
 		$dbname = "onthefly";
 		$username = "root";
@@ -24,7 +27,8 @@
 					,$username, $password);
 			
 		$vid = $_GET['vid'];
-			
+		
+	#bevestigen om de vliegtuigen te verwijderen
 		if(isset($_POST["btnJa"])) {
 
 			$query = "DELETE FROM vliegtuigen WHERE vid = '$vid'";

@@ -17,35 +17,36 @@
 		<br/>
 		<div class = 'ToBx'>
 			<h1> Vliegtuig toevoegen</h1>
-			<h3><input name="nummer" type="name" value="Vliegtuig nummer"><br/>	
-				<input name="vtype" type="text" value="Type"/><br/>
-				<input name="vmaatschappij" type="text" value="Vliegtuig maatschappij"/><br/>		
-				<select name="vstatus">
+			<h3><input name="nummer" type="name" placeholder="Vliegtuig nummer"><br/>
+				<input name="vtype" type="text" placeholder="Type"/><br/>
+				<input name="vmaatschappij" type="text" placeholder="Vliegtuig maatschappij"/><br/>
+				<select name="vstatus" style="text-align-last:center;">
 							<option value=" ">Vliegtuig status</option>
 							<option value="normaal">normaal</option>
 							<option value="grounded">grounded</option>
 							<option value="in reparatie">in reparatie</option>
 							<option value="verloren">verloren</option>
-						</select><br/>
+						</select><br/></h3>
 			
 			<h3><input type = "submit" name = "btnVliegtuig" value = "Vliegtuig Toevoegen" class='submitBx' /></h3>
 			<br/>
 			<h1> Vlucht toevoegen</h1>
-			<h3><input name="vlnummer" type="name" value="Vlucht nummer"/><br/>	
-				<input name="vertrek" type="text" value="Vertrek"/><br/>
-				<input name="aankomst" type="text" value="Aankomst"/><br/>
+			<h3><input name="vlnummer" type="name" placeholder="Vlucht nummer"/><br/>
+				<input name="vertrek" type="text" placeholder="Vertrek"/><br/>
+				<input name="aankomst" type="text" placeholder="Aankomst"/><br/>
 				<input name="datum" type="date" value=" "/><br/>					
-				<input name="bestemming" type="text" value="Bestemming"/><br/>
-				<select name="pstatus">
+				<input name="bestemming" type="text" placeholder="Bestemming"/><br/>
+				<select name="pstatus" style="text-align-last:center;">
 							<option value=" ">Vlucht status</option>
 							<option value="normaal">normaal</option>
 							<option value="geannuleerd">geannuleert</option>
 							<option value="vertraagt">vertraagt</option>
 						</select><br/>
-				<input name="vnummer" type="name" value="Vliegtuig nummer"><br/>
+				<input name="vnummer" type="name" placeholder="Vliegtuig nummer"><br/></h3>
 			<h3><input type = "submit" name = "btnVlucht" value = "Vlucht Toevoegen" class='submitBx' /></h3>
 		
 		<?php
+	#database connectie
 		$host = "localhost";
         $dbname = "onthefly";
         $username = "root";
@@ -54,7 +55,7 @@
         $con = new PDO ("mysql:host=".$host.";dbname=".$dbname.";"
 			,$username, $password);
 			
-		
+	#vliegtuigen toevoegen
 		if (isset($_POST["btnVliegtuig"])){
 		
 			$nummer = $_POST["nummer"];
@@ -71,6 +72,7 @@
 			}else echo "!ERROR!";
 		}
 		
+	#vlucht toevoegen
 		if (isset($_POST["btnVlucht"])){
 			
 			$vlnummer = $_POST["vlnummer"];
@@ -107,6 +109,7 @@
 		</div>
 		<div class = 'VBx' >
 		<?php
+	#tabel met vnummer 
 		echo "<h3><table style='border: solid 3px purple; background-color: skyblue;'>";
 		echo "<tr><th>Vliegtuig nummer</th></tr></h3>";
 		

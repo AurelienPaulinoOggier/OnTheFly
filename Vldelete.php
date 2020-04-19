@@ -15,6 +15,9 @@
 		</form>
 		
 		<?php
+	#verwijderen van vlucht
+	
+	#database connectie
 		$host = "localhost";
 		$dbname = "onthefly";
 		$username = "root";
@@ -24,7 +27,8 @@
 					,$username, $password);
 			
 		$pid = $_GET['pid'];
-			
+		
+	#bevestigen om de vlucht te verwijderen		
 		if(isset($_POST["btnJa"])) {
 
 			$query = "DELETE FROM planning WHERE pid = '$pid'";

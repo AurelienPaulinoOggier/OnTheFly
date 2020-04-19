@@ -25,6 +25,7 @@
         $con = new PDO ("mysql:host=".$host.";dbname=".$dbname.";"
 			,$username, $password);
 
+//extra en lesstof
 		#if(stm->execute() -- true) {
 			#$res = stm->fetshAll(PDO::FETCH_OBJ);
 			#foreach($res as $vliegtuig)

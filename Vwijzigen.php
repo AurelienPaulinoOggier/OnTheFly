@@ -7,6 +7,9 @@
 	<body>
 	
 	<?php
+	#wijzigen van vliegtuigen
+	
+	#database connectie
 		$host = "localhost";
         $dbname = "onthefly";
         $username = "root";
@@ -16,11 +19,13 @@
 			,$username, $password);
 		
 		$vid = $_GET['vid'];
-		
+	
+	#terug naar vorige pagina
 		if(isset($_POST{'btnTerug'})){
 			Header("location: OnTheFlyVligtuigen.php");
 		}	
 		
+	#wijzigen
 		if(isset($_POST['btnWijzigen']))
 		{
 			$vnummer = $_POST['vnummer'];
@@ -38,6 +43,7 @@
 			
 		}
 		
+	#query van wijzigen 
 		$query = "SELECT * FROM vliegtuigen WHERE vid = $vid";
 		$stm = $con->prepare($query);
 		if($stm->execute())

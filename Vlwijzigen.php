@@ -2,11 +2,14 @@
 <html>
 	<head>
         <link rel="stylesheet" href="styleOnTheFly.css">
-		<title> Wijzigen van Vliegtuig </title>
+		<title> Wijzigen van Vlucht </title>
 	</head>
 	<body>
 	
 	<?php
+	#wijzigen van vlucht
+	
+	#database connectie
 		$host = "localhost";
         $dbname = "onthefly";
         $username = "root";
@@ -17,10 +20,12 @@
 		
 		$pid = $_GET['pid'];
 		
+	#terug naar vorige pagina
 		if(isset($_POST{'btnTerug'})){
 			Header("location: OnTheFlyVligtuigen.php");
 		}	
 		
+	#wijzigen	
 		if(isset($_POST['btnWijzigen']))
 		{
 			$vlnummer = $_POST['vlnummer'];
@@ -41,6 +46,7 @@
 			
 		}
 		
+	#query van wijzigen 
 		$query = "SELECT * FROM planning,vliegtuigen WHERE vliegtuigen.vid = planning.vid AND pid = '$pid'";
 		$stm = $con->prepare($query);
 		if($stm->execute())

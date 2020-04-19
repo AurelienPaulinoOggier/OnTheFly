@@ -17,6 +17,7 @@
 		
 	</body>
 	<?php
+#database connectie
 	$host = "localhost";
     $dbname = "onthefly";
     $username = "root";
@@ -25,7 +26,8 @@
     $con = new PDO ("mysql:host=".$host.";dbname=".$dbname.";"
 		,$username, $password);
 
-	//vliegtuigen
+//vliegtuigen
+#tabel van vliegtuigen
 	echo "<h3><table style='border: solid 3px purple; background-color: skyblue; margin-left:25%;'>";
     echo "<tr><th>Vliegtuig nummer</th><th>Type</th><th>Vliegtuig maatschappij</th><th>Status</th></tr></h3>";
 		
@@ -53,7 +55,8 @@
 		echo "Foutmelding: " . $e->getMessage();
 	}
 	
-	//planning
+//planning
+#tabel van planing
 	echo "<h3><table style='border: solid 3px purple; background-color: skyblue; margin-left:16%;'>";
     echo "<tr><th>Vlucht nummer</th><th>Vertrek</th><th>Aankomst</th><th>Datum</th><th>Bestemming</th><th>Status</th><th>Vliegtuig nummer</th></tr></h3>";
 		

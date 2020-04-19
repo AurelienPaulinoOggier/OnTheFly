@@ -20,6 +20,7 @@
 		</div>
 		</form>
 		<?php
+	#database connectie
 		$host = "localhost";
         $dbname = "onthefly";
         $username = "root";
@@ -28,6 +29,7 @@
         $con = new PDO ("mysql:host=".$host.";dbname=".$dbname.";"
 			,$username, $password);
 		
+	#tabel om datum optezoeken
 		if(isset($_POST['btnDatum']))
 		{	
 			$datum = $_POST["datum"];
@@ -65,7 +67,8 @@
 				}
 			}else echo "Er is geen vlucht met deze datum";
 		}
-		
+	
+	#tabel van planing
 		echo "<h3><table style='border: solid 3px purple; background-color: skyblue;'>";
 		echo "<tr><th>Vlucht</th><th>Type</th><th>Vertrek</th><th>Retour</th><th>datum</th><th>Bestemming</th><th>Status</th><th>Vliegtuig maatschappij</th><th>Vliegtuig nummer</th></tr></h3>";
 		
