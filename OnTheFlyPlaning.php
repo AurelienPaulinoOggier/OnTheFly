@@ -2,14 +2,14 @@
 <html>
 	<head>
         <link rel="stylesheet" href="StyleOnTheFly.css">
-		<title> Planing </title>
+		<title> Planning </title>
 	</head>
 	<body>
         <form method="POST">
 		<nav>
 				<ul>
 					<li><a href="http://localhost/Vliegtuig/OnTheFlyHome.php" style="color: #d65a12; text-decoration: none;" > HOME <a/></li>
-					<li><a href="http://localhost/Vliegtuig/OnTheFlyPlaning.php" style="color: #d65a12; text-decoration: none;"> Planing <a/></li>
+					<li><a href="http://localhost/Vliegtuig/OnTheFlyPlaning.php" style="color: #d65a12; text-decoration: none;"> Planning <a/></li>
 					<li><a href="http://localhost/Vliegtuig/OnTheFlyVligtuigen.php" style="color: #d65a12; text-decoration: none;"> Vlietuigen <a/></li>
 					<li><a href="http://localhost/Vliegtuig/OnTheFlyToevoegen.php" style="color: #d65a12; text-decoration: none;"> Toevoegen <a/></li>
 				</ul>
@@ -68,7 +68,7 @@
 			}else echo "Er is geen vlucht met deze datum";
 		}
 	
-	#tabel van planing
+	#tabel van planning
 		echo "<h3><table style='border: solid 3px purple; background-color: skyblue;'>";
 		echo "<tr><th>Vlucht</th><th>Type</th><th>Vertrek</th><th>Retour</th><th>datum</th><th>Bestemming</th><th>Status</th><th>Vliegtuig maatschappij</th><th>Vliegtuig nummer</th></tr></h3>";
 		

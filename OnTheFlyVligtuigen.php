@@ -9,7 +9,7 @@
 		<nav>
             <ul>
                 <li><a href="http://localhost/Vliegtuig/OnTheFlyHome.php" style="color: #d65a12; text-decoration: none;" > HOME <a/></li>
-                <li><a href="http://localhost/Vliegtuig/OnTheFlyPlaning.php" style="color: #d65a12; text-decoration: none;"> Planing <a/></li>
+                <li><a href="http://localhost/Vliegtuig/OnTheFlyPlaning.php" style="color: #d65a12; text-decoration: none;"> Planning <a/></li>
                 <li><a href="http://localhost/Vliegtuig/OnTheFlyVligtuigen.php" style="color: #d65a12; text-decoration: none;"> Vlietuigen <a/></li>
                 <li><a href="http://localhost/Vliegtuig/OnTheFlyToevoegen.php" style="color: #d65a12; text-decoration: none;"> Toevoegen <a/></li>
             </ul>
@@ -56,7 +56,7 @@
 	}
 	
 //planning
-#tabel van planing
+#tabel van planning
 	echo "<h3><table style='border: solid 3px purple; background-color: skyblue; margin-left:16%;'>";
     echo "<tr><th>Vlucht nummer</th><th>Vertrek</th><th>Aankomst</th><th>Datum</th><th>Bestemming</th><th>Status</th><th>Vliegtuig nummer</th></tr></h3>";
 		
